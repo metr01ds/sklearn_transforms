@@ -29,5 +29,5 @@ class CorrigeNotas(BaseEstimator, TransformerMixin):
     
     def transform(self, X):
         data = X.copy()
-        self.dados[self.columns] = self.dados[self.columns].where(self.dados[self.columns]<=self.val_max,other=self.valor, axis=1)
-        return self.dados
+        data[self.columns] = self.dados[self.columns].where(self.dados[self.columns]<=self.val_max,other=self.valor, axis=1)
+        return data
