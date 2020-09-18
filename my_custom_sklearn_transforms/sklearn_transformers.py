@@ -34,9 +34,10 @@ class CorrigeNotas(BaseEstimator, TransformerMixin):
     
 #Insere coluna com médias
 class insereMedias(BaseEstimator, TransformerMixin):
-    def __init__(self, dados, columns):
+    def __init__(self, dados, columns, nome):
         self.dados = dados
         self.columns = columns
+        self.nome = nome
         
 
     def fit(self, X, y=None):
@@ -45,7 +46,7 @@ class insereMedias(BaseEstimator, TransformerMixin):
     
     def transform(self, X):
         data = X.copy()
-        data['MEDIA'] = data[self.columns].mean(axis=1)
+        data[nome] = data[self.columns].mean(axis=1)
         return data
 
    
