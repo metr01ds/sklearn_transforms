@@ -86,13 +86,11 @@ class insereDifMedias(BaseEstimator, TransformerMixin):
     
 #executa o SMOTE
 class ExecutaSmote(BaseEstimator, TransformerMixin):
-    def fit(self, X, xcolumns, ycolumns):
+    def fit(self, X, y):
         print(self)
-        self.xcolumns = xcolumns
-        self.ycolumns = ycolumns
         
-        X2 = X[self.xcolumns].copy()
-        y2 = X[self.ycolumns].copy()
+        X2 = X.copy()
+        y2 = y.copy()
         
         X, y = SMOTE().fit_sample(X2, y2)
         ret = (X, y)
