@@ -50,8 +50,12 @@ class insereMedias(BaseEstimator, TransformerMixin):
 
 #Insere coluna contendo a diferenças entre as médias gerais de cada materia e a média daquele aluno
 class insereDifMedias(BaseEstimator, TransformerMixin):
-    def __init__(self, dados):
+    def __init__(self, dados, column1, column2, column3, column4):
         self.dados = dados
+        self.column1 = column1
+        self.column2 = column2
+        self.column3 = column3
+        self.column4 = column4
         
 
     def fit(self, X, y=None):
@@ -60,10 +64,10 @@ class insereDifMedias(BaseEstimator, TransformerMixin):
     
     def transform(self, X):
         data = X.copy()
-        data['DIF_MEDIA_EM'] = (sum(data['NOTA_EM'])/len(data['NOTA_EM'])) - data['MEDIA']
-        data['DIF_MEDIA_MF'] = (sum(data['NOTA_MF'])/len(data['NOTA_MF'])) - data['MEDIA']
-        data['DIF_MEDIA_GO'] = (sum(data['NOTA_GO'])/len(data['NOTA_GO'])) - data['MEDIA']
-        data['DIF_MEDIA_DE'] = (sum(data['NOTA_DE'])/len(data['NOTA_DE'])) - data['MEDIA']
+        data[column1] = (sum(data[column1])/len(data[column1])) - data[column1].mean(axis=1)
+        data[column2] = (sum(data[column2])/len(data[column2])) - data[column2].mean(axis=1)
+        data[column3] = (sum(data[column3])/len(data[column3])) - data[column3].mean(axis=1)
+        data[column4] = (sum(data[column4])/len(data[column4])) - data[column4].mean(axis=1)
         return data
     
 #executa o SMOTE
