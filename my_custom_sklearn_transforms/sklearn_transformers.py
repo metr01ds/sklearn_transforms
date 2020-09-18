@@ -17,7 +17,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
         return data.drop(labels=self.columns, axis='columns')
     
 #Preenche valores NaN na coluna especificada
-class valoresNaN(BaseEstimator, TransformerMixin):
+class valoresNan(BaseEstimator, TransformerMixin):
     def __init__(self, dados, columns):
         self.dados = dados
         self.columns = columns
