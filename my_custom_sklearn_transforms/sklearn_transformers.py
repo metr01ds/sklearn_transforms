@@ -17,9 +17,10 @@ class DropColumns(BaseEstimator, TransformerMixin):
     
 #Preenche valores NaN na coluna especificada
 class valoresNan(BaseEstimator, TransformerMixin):
-    def __init__(self, dados, columns):
+    def __init__(self, dados, columns, target):
         self.dados = dados
         self.columns = columns
+        self.target = target
 
     def fit(self, X, y=None):
         return self
@@ -28,9 +29,9 @@ class valoresNan(BaseEstimator, TransformerMixin):
         data = X.copy()
         
         for i in range(len(data)):
-          if (data['PERFIL'][i] =="EXATAS") & (pd.isnull(data[self.columns][i])):
+          if (data[self.target][i] =="EXATAS") & (pd.isnull(data[self.columns][i])):
            data[self.columns][i]=data['NOTA_MF'][i]
-          if (data['PERFIL'][i] !="EXATAS") & (pd.isnull(data[self.columns][i])):
+          if (data[self.target][i] !="EXATAS") & (pd.isnull(data[self.columns][i])):
            data[self.columns][i]=(data['NOTA_MF'][i] + data['NOTA_DE'][i] + data['NOTA_EM'][i])/3
         return data
     
