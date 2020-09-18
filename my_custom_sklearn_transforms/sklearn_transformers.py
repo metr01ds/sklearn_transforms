@@ -1,7 +1,6 @@
 from sklearn.base import BaseEstimator, TransformerMixin
 import pandas as pd
 
-
 # All sklearn Transforms must have the `transform` and `fit` methods
 class DropColumns(BaseEstimator, TransformerMixin):
     def __init__(self, columns):
@@ -9,7 +8,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None):
         return self
-    
+
     def transform(self, X):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
