@@ -66,8 +66,8 @@ class insereMedias(BaseEstimator, TransformerMixin):
         data['MEDIA'] = data[self.columns].mean(axis=1)
         return data
 
-    #Insere coluna contendo a diferenças entre as médias gerais de cada materia e a média daquele aluno
-    class insereDifMedias(BaseEstimator, TransformerMixin):
+#Insere coluna contendo a diferenças entre as médias gerais de cada materia e a média daquele aluno
+class insereDifMedias(BaseEstimator, TransformerMixin):
     def __init__(self, dados):
         self.dados = dados
         
@@ -84,7 +84,7 @@ class insereMedias(BaseEstimator, TransformerMixin):
         data['DIF_MEDIA_DE'] = (sum(data['NOTA_DE'])/len(data['NOTA_DE'])) - data['MEDIA']
         return data
     
-    #executa o SMOTE
+#executa o SMOTE
 class ExecutaSmote(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         print(self)
