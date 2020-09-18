@@ -64,10 +64,10 @@ class insereDifMedias(BaseEstimator, TransformerMixin):
     
     def transform(self, X):
         data = X.copy()
-        data[column1] = (sum(data[column1])/len(data[column1])) - data[column1].mean(axis=1)
-        data[column2] = (sum(data[column2])/len(data[column2])) - data[column2].mean(axis=1)
-        data[column3] = (sum(data[column3])/len(data[column3])) - data[column3].mean(axis=1)
-        data[column4] = (sum(data[column4])/len(data[column4])) - data[column4].mean(axis=1)
+        data[column1+1] = (sum(data[column1])/len(data[column1])) - data[column1].mean(axis=1)
+        data[column2+2] = (sum(data[column2])/len(data[column2])) - data[column2].mean(axis=1)
+        data[column3+3] = (sum(data[column3])/len(data[column3])) - data[column3].mean(axis=1)
+        data[column4+4] = (sum(data[column4])/len(data[column4])) - data[column4].mean(axis=1)
         return data
     
 #executa o SMOTE
